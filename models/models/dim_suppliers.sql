@@ -1,0 +1,1 @@
+select supplier_id, company_name as name from "NORTHWINDS"."NORTHWINDS2_RDS_PUBLIC"."SUPPLIERS"
