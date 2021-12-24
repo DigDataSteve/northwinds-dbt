@@ -7,3 +7,4 @@ sources:
     schema: NORTHWINDS2_RDS_PUBLIC
     tables:
       - name: customers
+      - name: suppliers
