@@ -1,0 +1,9 @@
+# sources.yaml
+version: 2
+
+sources:
+  - name: rds
+    database: NORTHWINDS
+    schema: NORTHWINDS2_RDS_PUBLIC
+    tables:
+      - name: customers

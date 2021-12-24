@@ -1,5 +1,5 @@
 WITH source AS (
-    select * from "NORTHWINDS"."NORTHWINDS2_RDS_PUBLIC"."CUSTOMERS"
+    select * from {{source('rds', 'customers')}}
 ), new_table AS (
     SELECT customer_id, country, 
     split_part(contact_name, ' ', 1) as first_name, 
@@ -7,3 +7,4 @@ WITH source AS (
     FROM source
 )
 SELECT * FROM new_table;
+
