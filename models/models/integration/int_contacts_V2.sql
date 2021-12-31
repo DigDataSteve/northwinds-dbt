@@ -16,9 +16,12 @@ WITH hubspot_contacts AS (
 ), deduped_contacts AS (
     SELECT 
     {{ dbt_utils.surrogate_key(['first_name', 'last_name', 'customer_phone']) }} as contact_pk,
-    first_name, last_name, 
+    MAX(hubspot_contact_id) AS hubspot_contact_id, 
+    MAX(rds_contact_id) AS rds_contact_id, first_name, last_name, 
     MAX(customer_phone) AS customer_phone, 
     MAX(company_id) AS company_id
+    -- MAX(hubspot_company_id) AS hubspot_company_id, 
+    -- MAX(rds_company_id) AS rds_company_id
     FROM union_contacts
     GROUP BY last_name, first_name, customer_phone
     ORDER BY last_name 

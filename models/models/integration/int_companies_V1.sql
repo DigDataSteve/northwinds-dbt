@@ -1,3 +1,4 @@
+-- original company's view with the hubspot and rds company ids along with the primary key that was generated via the surrogate key.
 WITH rds_companies AS (
     SELECT * FROM GET99NVI3S.stg_rds_companies
 ), hubspot_companies AS (
@@ -11,8 +12,8 @@ WITH rds_companies AS (
 ), merged_companies AS (
     SELECT 
     {{ dbt_utils.surrogate_key(['company_name']) }} AS company_pk,
-    -- MAX(hubspot_company_id) AS hubspot_company_id, 
-    -- MAX(rds_company_id) AS rds_company_id, 
+    MAX(hubspot_company_id) AS hubspot_company_id, 
+    MAX(rds_company_id) AS rds_company_id, 
     company_name, 
     MAX(city) AS city, 
     MAX(address) AS address, 
