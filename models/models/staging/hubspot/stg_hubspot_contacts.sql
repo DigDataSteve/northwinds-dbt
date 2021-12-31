@@ -20,9 +20,8 @@ WITH source AS (
     first_name,
     last_name,
     customer_phone,
-    company_id, 
-    source.business_name
+    company_id
     FROM source
     JOIN companies ON source.business_name = companies.business_name
 )
-SELECT * FROM final_query;
+SELECT * FROM final_query
