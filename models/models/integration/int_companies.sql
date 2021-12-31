@@ -9,8 +9,14 @@ WITH rds_companies AS (
     SELECT NULL AS rds_company_id, company_id AS hubspot_company_id, 
     business_name AS company_name, NULL AS city, NULL AS address, NULL AS postal_code FROM hubspot_companies
 ), merged_companies AS (
-    SELECT COUNT(*), MAX(hubspot_company_id), MAX(rds_company_id), company_name, 
-    MAX(city) AS city, MAX(address) AS address, MAX(postal_code) AS postal_code
+    SELECT 
+    {{ dbt_utils.surrogate_key(['company_name']) }} AS company_pk,
+    MAX(hubspot_company_id) AS hubspot_company_id, 
+    MAX(rds_company_id) AS rds_company_id, 
+    company_name, 
+    MAX(city) AS city, 
+    MAX(address) AS address, 
+    MAX(postal_code) AS postal_code
     FROM union_companies
     GROUP BY company_name
 )
