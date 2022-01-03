@@ -1,0 +1,1 @@
+select * from "NORTHWINDS"."GET99NVI3S"."INT_CONTACTS"
