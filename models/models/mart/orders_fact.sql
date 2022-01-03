@@ -1,4 +1,6 @@
 WITH customer_pk AS (
-    select * from {{source('rds_customer_pk', 'INT_CONTACTS')}}
+    select contact_pk from {{source('rds_customer_pk', 'INT_CONTACTS')}}
+), order_info AS (
+    SELECT * FROM {{ ref('int_orders')}}
 )
-SELECT * FROM customer_pk
+SELECT * FROM order_info
