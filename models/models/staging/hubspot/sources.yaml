@@ -6,3 +6,15 @@ sources:
     schema: GET99NVI3S
     tables:
       - name: HUBSPOT_CUSTOMER_DATA
+  - name: rds
+    database: NORTHWINDS
+    schema: NORTHWINDS2_RDS_PUBLIC
+    tables:
+      - name: orders
+      - name: order_details
+  - name: rds_customer_pk
+    database: NORTHWINDS
+    schema: GET99NVI3S
+    tables:
+      - name: INT_CONTACTS
+  
