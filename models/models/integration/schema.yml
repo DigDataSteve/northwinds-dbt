@@ -6,6 +6,7 @@ models:
       - name: order_pk
         tests:
           - not_null
+          - unique
       - name: contact_pk
         tests:
           - not_null
@@ -14,11 +15,13 @@ models:
       - name: company_pk
         tests:
           - not_null
+          - unique
   - name: int_contacts
     columns:
       - name: contact_pk
         tests:
           - not_null 
+          - unique
   - name: int_orders
     columns:
       - name: order_pk
