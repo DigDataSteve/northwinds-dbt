@@ -7,6 +7,9 @@ models:
         tests:
           - not_null
           - unique
+          - relationships:
+                to: ('int_contacts')
+                field: contact_pk
       - name: contact_pk
         tests:
           - not_null
@@ -35,3 +38,22 @@ models:
       - name: last_name
         tests:
           - not_null
+  - name: companies_dim
+    columns:
+      - name: company_pk
+        tests:
+          - not_null
+          - unique
+          - relationships:
+                to: ref('int_companies')
+                field: company_pk
+  - name: contacts_dim
+    columns:
+      - name: contact_pk
+        tests:
+          - not_null
+          - unique
+          - relationships:
+                to: ref('int_contacts')
+                field: contact_pk
+              
